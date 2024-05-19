@@ -2,17 +2,20 @@
 {% if user.is_authenticated %}
 Logged In as {{ user.username }}
 
+<a href="{% url 'createtodo' %}">Создать</a>
+<a href="{% url 'currenttodos' %}">Текущие</a>
+<a href="{% url 'completedtodos' %}">Завершенные</a>
+
 
 
 <form action="{% url 'logoutuser' %} " method="POST">
     {% csrf_token %}
-{{ form.as_p }}
 <button type="submit">lOGOUT</button>
 </form>
 
 {% else %}
-<a href="{% url 'signupuser' %} ">Sign Up</a>
-<a href="{% url 'loginuser' %} ">Login</a>
+<a href="{% url 'signupuser' %} ">Регистрация</a>
+<a href="{% url 'loginuser' %} ">Вход</a>
 
 {% endif %}
 <br>
